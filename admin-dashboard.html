@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Solutions - Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Elevator Solutions</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="user-dashboard.html">User Dashboard</a></li>
+            <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+            <li><a href="login.html" class="login-btn">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <h3>Admin User</h3>
+                <p>admin@elevatorsolutions.com</p>
+            </div>
+            <ul class="dashboard-menu">
+                <li class="active" data-tab="overview"><i class="fas fa-home"></i> Overview</li>
+                <li data-tab="leads"><i class="fas fa-funnel-dollar"></i> Leads</li>
+                <li data-tab="issues"><i class="fas fa-exclamation-circle"></i> Issues</li>
+                <li data-tab="service-requests"><i class="fas fa-wrench"></i> Service Requests</li>
+                <li data-tab="maintenance"><i class="fas fa-calendar-check"></i> Maintenance Plans</li>
+                <li data-tab="users"><i class="fas fa-users"></i> Users</li>
+            </ul>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Tab -->
+            <div class="dashboard-tab active" id="overview">
+                <h2>Admin Dashboard Overview</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div class="stat-info">
+                            <h3>Open Issues</h3>
+                            <p>12</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-wrench"></i>
+                        <div class="stat-info">
+                            <h3>Pending Services</h3>
+                            <p>8</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-info">
+                            <h3>Active Users</h3>
+                            <p>45</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <div class="stat-info">
+                            <h3>Maintenance Plans</h3>
+                            <p>3</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon issue"><i class="fas fa-exclamation-circle"></i></div>
+                            <div class="activity-details">
+                                <h4>New Issue Reported: Elevator not responding</h4>
+                                <p>Status: Pending Review</p>
+                                <small>May 15, 2024</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon service"><i class="fas fa-wrench"></i></div>
+                            <div class="activity-details">
+                                <h4>Service Request Completed</h4>
+                                <p>Type: Monthly Checkup</p>
+                                <small>May 10, 2024</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leads Tab -->
+            <div class="dashboard-tab" id="leads">
+                <h2>Leads Management</h2>
+                
+                <!-- Add New Lead Form -->
+                <div class="dashboard-form lead-form">
+                    <h3>Add New Lead</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customer-name">Customer Name*</label>
+                            <input type="text" id="customer-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-phone">Phone Number*</label>
+                            <input type="tel" id="customer-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-email">Email</label>
+                            <input type="email" id="customer-email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lead-source">Lead Source*</label>
+                        <select id="lead-source" required>
+                            <option value="">Select Source</option>
+                            <option value="phone">Phone Call</option>
+                            <option value="website">Website</option>
+                            <option value="referral">Referral</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lead-requirements">Requirements/Notes*</label>
+                        <textarea id="lead-requirements" rows="4" required placeholder="Enter customer requirements, conversation points, and important notes"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="follow-up-date">Follow-up Date*</label>
+                            <input type="date" id="follow-up-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="follow-up-time">Follow-up Time*</label>
+                            <input type="time" id="follow-up-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lead-priority">Priority*</label>
+                            <select id="lead-priority" required>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Save Lead</button>
+                        <button type="button" class="btn-secondary">Clear Form</button>
+                    </div>
+                </div>
+
+                <!-- Leads List -->
+                <div class="leads-management">
+                    <div class="section-header">
+                        <h3>Active Leads</h3>
+                        <div class="filters">
+                            <select id="lead-status-filter">
+                                <option value="all">All Status</option>
+                                <option value="new">New</option>
+                                <option value="contacted">Contacted</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="converted">Converted</option>
+                                <option value="lost">Lost</option>
+                            </select>
+                            <select id="lead-priority-filter">
+                                <option value="all">All Priorities</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                            <input type="date" id="lead-date-filter" placeholder="Filter by date">
+                            <input type="text" placeholder="Search leads..." class="search-input">
+                        </div>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Contact</th>
+                                <th>Requirements</th>
+                                <th>Follow-up</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sarah Johnson</td>
+                                <td>
+                                    <div>+1 234-567-8900</div>
+                                    <div class="small-text">sarah@example.com</div>
+                                </td>
+                                <td>
+                                    <div class="requirements-cell">
+                                        New elevator installation for 5-story building...
+                                        <span class="view-more">View More</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>May 20, 2024</div>
+                                    <div class="small-text">10:30 AM</div>
+                                </td>
+                                <td><span class="priority-high">High</span></td>
+                                <td><span class="status-new">New</span></td>
+                                <td>
+                                    <button class="btn-view" onclick="viewLead('lead1')">View</button>
+                                    <button class="btn-edit" onclick="openLeadEditModal('lead1')">Edit</button>
+                                    <button class="btn-delete">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Michael Brown</td>
+                                <td>
+                                    <div>+1 234-567-8901</div>
+                                    <div class="small-text">michael@example.com</div>
+                                </td>
+                                <td>
+                                    <div class="requirements-cell">
+                                        Maintenance service inquiry for existing elevator...
+                                        <span class="view-more">View More</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>May 21, 2024</div>
+                                    <div class="small-text">2:00 PM</div>
+                                </td>
+                                <td><span class="priority-medium">Medium</span></td>
+                                <td><span class="status-contacted">Contacted</span></td>
+                                <td>
+                                    <button class="btn-view" onclick="viewLead('lead2')">View</button>
+                                    <button class="btn-edit" onclick="openLeadEditModal('lead2')">Edit</button>
+                                    <button class="btn-delete">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Lead Edit Modal -->
+            <div class="modal" id="leadEditModal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2>Edit Lead</h2>
+                    <form id="editLeadForm" class="dashboard-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="edit-customer-name">Customer Name*</label>
+                                <input type="text" id="edit-customer-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-customer-phone">Phone Number*</label>
+                                <input type="tel" id="edit-customer-phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-customer-email">Email</label>
+                                <input type="email" id="edit-customer-email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="edit-lead-source">Lead Source*</label>
+                            <select id="edit-lead-source" required>
+                                <option value="">Select Source</option>
+                                <option value="phone">Phone Call</option>
+                                <option value="website">Website</option>
+                                <option value="referral">Referral</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Additional Details Section -->
+                        <div class="form-group">
+                            <label>Additional Details</label>
+                            <div id="additionalDetailsContainer">
+                                <!-- Dynamic details will be added here -->
+                            </div>
+                            <button type="button" class="btn-secondary" id="addDetailBtn">
+                                <i class="fas fa-plus"></i> Add Detail
+                            </button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="edit-requirements">Requirements/Notes*</label>
+                            <textarea id="edit-requirements" rows="4" required></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="edit-follow-up-date">Follow-up Date*</label>
+                                <input type="date" id="edit-follow-up-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-follow-up-time">Follow-up Time*</label>
+                                <input type="time" id="edit-follow-up-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-priority">Priority*</label>
+                                <select id="edit-priority" required>
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Save Changes</button>
+                            <button type="button" class="btn-secondary" onclick="closeLeadEditModal()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Issues Tab -->
+            <div class="dashboard-tab" id="issues">
+                <h2>Manage Issues</h2>
+                <div class="filters">
+                    <select id="issue-status-filter">
+                        <option value="all">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                    <select id="issue-priority-filter">
+                        <option value="all">All Priorities</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                        <option value="emergency">Emergency</option>
+                    </select>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Issue ID</th>
+                            <th>User</th>
+                            <th>Title</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Date Reported</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1234</td>
+                            <td>John Doe</td>
+                            <td>Elevator not responding to call button</td>
+                            <td><span class="priority-high">High</span></td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td>May 15, 2024</td>
+                            <td>
+                                <button class="btn-view">View</button>
+                                <button class="btn-assign">Assign</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#1233</td>
+                            <td>Jane Smith</td>
+                            <td>Unusual noise in elevator</td>
+                            <td><span class="priority-medium">Medium</span></td>
+                            <td><span class="status-in-progress">In Progress</span></td>
+                            <td>May 14, 2024</td>
+                            <td>
+                                <button class="btn-view">View</button>
+                                <button class="btn-assign">Assign</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Service Requests Tab -->
+            <div class="dashboard-tab" id="service-requests">
+                <h2>Manage Service Requests</h2>
+                <div class="filters">
+                    <select id="service-status-filter">
+                        <option value="all">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="scheduled">Scheduled</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                    <select id="service-type-filter">
+                        <option value="all">All Types</option>
+                        <option value="inspection">Inspection</option>
+                        <option value="repair">Repair</option>
+                        <option value="upgrade">Upgrade</option>
+                    </select>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>User</th>
+                            <th>Service Type</th>
+                            <th>Requested Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#5678</td>
+                            <td>John Doe</td>
+                            <td>Monthly Checkup</td>
+                            <td>May 10, 2024</td>
+                            <td><span class="status-scheduled">Scheduled</span></td>
+                            <td>
+                                <button class="btn-view">View</button>
+                                <button class="btn-assign">Assign</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#5677</td>
+                            <td>Jane Smith</td>
+                            <td>Emergency Repair</td>
+                            <td>May 9, 2024</td>
+                            <td><span class="status-completed">Completed</span></td>
+                            <td>
+                                <button class="btn-view">View</button>
+                                <button class="btn-assign">Assign</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Maintenance Plans Tab -->
+            <div class="dashboard-tab" id="maintenance">
+                <h2>Manage Maintenance Plans</h2>
+                <div class="maintenance-stats">
+                    <div class="stat-card">
+                        <h3>Total Plans</h3>
+                        <p>3</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Subscribers</h3>
+                        <p>32</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Monthly Revenue</h3>
+                        <p>$6,400</p>
+                    </div>
+                </div>
+
+                <div class="plan-management">
+                    <div class="section-header">
+                        <h3>Available Plans</h3>
+                        <div class="filters">
+                            <select id="plan-type-filter">
+                                <option value="all">All Plan Types</option>
+                                <option value="basic">Basic</option>
+                                <option value="premium">Premium</option>
+                                <option value="enterprise">Enterprise</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Plan Name</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>Coverage</th>
+                                <th>Inspection Frequency</th>
+                                <th>Subscribers</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Basic Maintenance</td>
+                                <td>Basic</td>
+                                <td>$100/month</td>
+                                <td>1 Elevator</td>
+                                <td>Quarterly</td>
+                                <td>15</td>
+                                <td>
+                                    <button class="btn-view">View</button>
+                                    <button class="btn-edit">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Premium Care</td>
+                                <td>Premium</td>
+                                <td>$200/month</td>
+                                <td>Up to 3 Elevators</td>
+                                <td>Monthly</td>
+                                <td>12</td>
+                                <td>
+                                    <button class="btn-view">View</button>
+                                    <button class="btn-edit">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Enterprise Solution</td>
+                                <td>Enterprise</td>
+                                <td>$500/month</td>
+                                <td>Up to 10 Elevators</td>
+                                <td>Weekly</td>
+                                <td>5</td>
+                                <td>
+                                    <button class="btn-view">View</button>
+                                    <button class="btn-edit">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="plan-settings">
+                    <h3>Create New Plan</h3>
+                    <form class="dashboard-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="plan-name">Plan Name*</label>
+                                <input type="text" id="plan-name" name="plan-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="plan-type">Plan Type*</label>
+                                <select id="plan-type" name="plan-type" required>
+                                    <option value="">Select Type</option>
+                                    <option value="basic">Basic</option>
+                                    <option value="premium">Premium</option>
+                                    <option value="enterprise">Enterprise</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="plan-price">Monthly Price*</label>
+                                <input type="number" id="plan-price" name="plan-price" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inspection-frequency">Inspection Frequency*</label>
+                                <select id="inspection-frequency" name="inspection-frequency" required>
+                                    <option value="">Select Frequency</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="bi-weekly">Bi-weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="quarterly">Quarterly</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="max-elevators">Maximum Elevators*</label>
+                            <input type="number" id="max-elevators" name="max-elevators" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="plan-features">Features*</label>
+                            <textarea id="plan-features" name="plan-features" rows="4" required placeholder="List the features included in this plan"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="plan-terms">Terms & Conditions*</label>
+                            <textarea id="plan-terms" name="plan-terms" rows="4" required placeholder="Enter the terms and conditions for this plan"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Create Plan</button>
+                            <button type="button" class="btn-secondary">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Users Tab -->
+            <div class="dashboard-tab" id="users">
+                <h2>Manage Users</h2>
+                <div class="user-filters">
+                    <input type="text" placeholder="Search users..." class="search-input">
+                    <select id="user-role-filter">
+                        <option value="all">All Roles</option>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Plan</th>
+                            <th>Status</th>
+                            <th>Join Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>john.doe@example.com</td>
+                            <td>User</td>
+                            <td>
+                                <div>Premium Care</div>
+                                <div class="small-text">2 Elevators</div>
+                            </td>
+                            <td><span class="status-active">Active</span></td>
+                            <td>Jan 1, 2024</td>
+                            <td>
+                                <button class="btn-view">View</button>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>jane.smith@example.com</td>
+                            <td>User</td>
+                            <td>
+                                <div>Basic Maintenance</div>
+                                <div class="small-text">1 Elevator</div>
+                            </td>
+                            <td><span class="status-active">Active</span></td>
+                            <td>Feb 15, 2024</td>
+                            <td>
+                                <button class="btn-view">View</button>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Acme Corporation</td>
+                            <td>contact@acme.com</td>
+                            <td>User</td>
+                            <td>
+                                <div>Enterprise Solution</div>
+                                <div class="small-text">5 Elevators</div>
+                            </td>
+                            <td><span class="status-active">Active</span></td>
+                            <td>Mar 1, 2024</td>
+                            <td>
+                                <button class="btn-view">View</button>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@elevatorsolutions.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Elevator Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuItems = document.querySelectorAll('.dashboard-menu li');
+            const tabs = document.querySelectorAll('.dashboard-tab');
+            
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all menu items
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Hide all tabs
+                    tabs.forEach(tab => tab.classList.remove('active'));
+                    // Show the selected tab
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+
+        // Lead Edit Modal Functions
+        const leadEditModal = document.getElementById('leadEditModal');
+        const addDetailBtn = document.getElementById('addDetailBtn');
+        const additionalDetailsContainer = document.getElementById('additionalDetailsContainer');
+        const closeModalBtn = document.querySelector('.close-modal');
+        let detailCounter = 0;
+
+        function openLeadEditModal(leadId) {
+            leadEditModal.style.display = 'block';
+            // Here you would typically populate the form with the lead's data
+            // For demonstration, we'll just show the modal
+        }
+
+        function closeLeadEditModal() {
+            leadEditModal.style.display = 'none';
+        }
+
+        // Close modal when clicking the close button
+        closeModalBtn.addEventListener('click', closeLeadEditModal);
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == leadEditModal) {
+                closeLeadEditModal();
+            }
+        }
+
+        // Add new detail field
+        addDetailBtn.addEventListener('click', function() {
+            const detailDiv = document.createElement('div');
+            detailDiv.className = 'detail-item';
+            detailDiv.innerHTML = `
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Detail Title" class="detail-title">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Detail Value" class="detail-value">
+                    </div>
+                    <button type="button" class="btn-delete-detail" onclick="removeDetail(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+            additionalDetailsContainer.appendChild(detailDiv);
+            detailCounter++;
+        });
+
+        function removeDetail(button) {
+            button.closest('.detail-item').remove();
+        }
+
+        // Handle form submission
+        document.getElementById('editLeadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect all additional details
+            const details = [];
+            document.querySelectorAll('.detail-item').forEach(item => {
+                const title = item.querySelector('.detail-title').value;
+                const value = item.querySelector('.detail-value').value;
+                if (title && value) {
+                    details.push({ title, value });
+                }
+            });
+
+            // Here you would typically save the data
+            console.log('Form submitted with additional details:', details);
+            
+            // Close the modal
+            closeLeadEditModal();
+        });
+    </script>
+</body>
+</html> 

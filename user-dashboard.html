@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Solutions - User Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Elevator Solutions</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="user-dashboard.html">User Dashboard</a></li>
+            <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+            <li><a href="login.html" class="login-btn">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <h3>John Doe</h3>
+                <p>john.doe@example.com</p>
+            </div>
+            <ul class="dashboard-menu">
+                <li class="active" data-tab="overview"><i class="fas fa-home"></i> Overview</li>
+                <li data-tab="report-issue"><i class="fas fa-exclamation-circle"></i> Report Issue</li>
+                <li data-tab="service-request"><i class="fas fa-wrench"></i> Request Service</li>
+                <li data-tab="maintenance-plans"><i class="fas fa-calendar-check"></i> Maintenance Plans</li>
+                <li data-tab="profile"><i class="fas fa-user"></i> Profile</li>
+            </ul>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Tab -->
+            <div class="dashboard-tab active" id="overview">
+                <h2>Dashboard Overview</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div class="stat-info">
+                            <h3>Open Issues</h3>
+                            <p>2</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-wrench"></i>
+                        <div class="stat-info">
+                            <h3>Pending Services</h3>
+                            <p>1</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <div class="stat-info">
+                            <h3>Maintenance Plan</h3>
+                            <p>Premium</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon issue"><i class="fas fa-exclamation-circle"></i></div>
+                            <div class="activity-details">
+                                <h4>Issue Reported: Elevator not responding to call button</h4>
+                                <p>Status: Under Review</p>
+                                <small>May 15, 2024</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon service"><i class="fas fa-wrench"></i></div>
+                            <div class="activity-details">
+                                <h4>Service Request: Monthly Checkup</h4>
+                                <p>Status: Scheduled</p>
+                                <small>May 10, 2024</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon maintenance"><i class="fas fa-calendar-check"></i></div>
+                            <div class="activity-details">
+                                <h4>Maintenance Plan Renewed</h4>
+                                <p>Plan: Premium Annual</p>
+                                <small>April 30, 2024</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Report Issue Tab -->
+            <div class="dashboard-tab" id="report-issue">
+                <h2>Report an Issue</h2>
+                <form class="dashboard-form">
+                    <div class="form-group">
+                        <label for="issue-title">Issue Title</label>
+                        <input type="text" id="issue-title" name="issue-title" placeholder="Brief description of the issue" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue-type">Issue Type</label>
+                        <select id="issue-type" name="issue-type" required>
+                            <option value="">Select Issue Type</option>
+                            <option value="mechanical">Mechanical Problem</option>
+                            <option value="electrical">Electrical Problem</option>
+                            <option value="noise">Unusual Noise</option>
+                            <option value="door">Door Problem</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue-description">Detailed Description</label>
+                        <textarea id="issue-description" name="issue-description" rows="5" placeholder="Please provide details about the issue" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue-priority">Priority</label>
+                        <select id="issue-priority" name="issue-priority" required>
+                            <option value="">Select Priority</option>
+                            <option value="low">Low - Not urgent</option>
+                            <option value="medium">Medium - Needs attention soon</option>
+                            <option value="high">High - Urgent problem</option>
+                            <option value="emergency">Emergency - Immediate attention required</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue-attachment">Attach Photo/Video (optional)</label>
+                        <input type="file" id="issue-attachment" name="issue-attachment">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Submit Issue</button>
+                        <button type="reset" class="btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+
+                <div class="issue-history">
+                    <h3>Previous Issues</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Issue ID</th>
+                                <th>Title</th>
+                                <th>Date Reported</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1234</td>
+                                <td>Elevator not responding to call button</td>
+                                <td>May 15, 2024</td>
+                                <td><span class="status-pending">Under Review</span></td>
+                                <td><a href="#" class="btn-view">View Details</a></td>
+                            </tr>
+                            <tr>
+                                <td>#1201</td>
+                                <td>Unusual noise when elevator is moving</td>
+                                <td>April 20, 2024</td>
+                                <td><span class="status-resolved">Resolved</span></td>
+                                <td><a href="#" class="btn-view">View Details</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Service Request Tab -->
+            <div class="dashboard-tab" id="service-request">
+                <h2>Request Elevator Service</h2>
+                <form class="dashboard-form">
+                    <div class="form-group">
+                        <label for="service-type">Service Type</label>
+                        <select id="service-type" name="service-type" required>
+                            <option value="">Select Service Type</option>
+                            <option value="inspection">Regular Inspection</option>
+                            <option value="repair">Repair Service</option>
+                            <option value="upgrade">System Upgrade</option>
+                            <option value="modernization">Modernization</option>
+                            <option value="other">Other Service</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-date">Preferred Date</label>
+                        <input type="date" id="service-date" name="service-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-time">Preferred Time</label>
+                        <select id="service-time" name="service-time" required>
+                            <option value="">Select Time</option>
+                            <option value="morning">Morning (8AM - 12PM)</option>
+                            <option value="afternoon">Afternoon (12PM - 4PM)</option>
+                            <option value="evening">Evening (4PM - 8PM)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-notes">Additional Notes</label>
+                        <textarea id="service-notes" name="service-notes" rows="4" placeholder="Any specific requirements or information"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Submit Request</button>
+                        <button type="reset" class="btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+
+                <div class="service-history">
+                    <h3>Service History</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Service Type</th>
+                                <th>Requested Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#5678</td>
+                                <td>Monthly Checkup</td>
+                                <td>May 10, 2024</td>
+                                <td><span class="status-scheduled">Scheduled</span></td>
+                                <td><a href="#" class="btn-view">View Details</a></td>
+                            </tr>
+                            <tr>
+                                <td>#5623</td>
+                                <td>Repair Service</td>
+                                <td>March 15, 2024</td>
+                                <td><span class="status-completed">Completed</span></td>
+                                <td><a href="#" class="btn-view">View Details</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Maintenance Plans Tab -->
+            <div class="dashboard-tab" id="maintenance-plans">
+                <h2>Maintenance Plans</h2>
+                
+                <div class="current-plan">
+                    <h3>Your Current Plan</h3>
+                    <div class="plan-details">
+                        <div class="plan-info">
+                            <h4>Premium Maintenance Plan</h4>
+                            <p><strong>Status:</strong> <span class="status-active">Active</span></p>
+                            <p><strong>Renewal Date:</strong> December 31, 2024</p>
+                            <p><strong>Time Remaining:</strong> 7 months, 15 days</p>
+                            <p><strong>Features:</strong></p>
+                            <ul>
+                                <li>Monthly comprehensive inspections</li>
+                                <li>24/7 emergency support</li>
+                                <li>Free repairs (parts & labor included)</li>
+                                <li>Priority scheduling</li>
+                                <li>Quarterly performance reports</li>
+                            </ul>
+                            <button class="btn-primary">Renew Plan</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="available-plans">
+                    <h3>Available Maintenance Plans</h3>
+                    <div class="plan-cards">
+                        <div class="plan-card">
+                            <div class="plan-header">
+                                <h4>Basic Plan</h4>
+                                <p class="plan-price">$99<span>/month</span></p>
+                            </div>
+                            <div class="plan-body">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Bi-monthly inspections</li>
+                                    <li><i class="fas fa-check"></i> Standard response support</li>
+                                    <li><i class="fas fa-check"></i> 10% discount on repairs</li>
+                                    <li><i class="fas fa-check"></i> Standard scheduling</li>
+                                    <li><i class="fas fa-times"></i> Performance reports</li>
+                                </ul>
+                                <button class="btn-outline">Request Demo</button>
+                                <button class="btn-primary">Select Plan</button>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-card featured">
+                            <div class="plan-header">
+                                <h4>Premium Plan</h4>
+                                <p class="plan-price">$199<span>/month</span></p>
+                            </div>
+                            <div class="plan-body">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Monthly comprehensive inspections</li>
+                                    <li><i class="fas fa-check"></i> 24/7 emergency support</li>
+                                    <li><i class="fas fa-check"></i> Free repairs (parts & labor included)</li>
+                                    <li><i class="fas fa-check"></i> Priority scheduling</li>
+                                    <li><i class="fas fa-check"></i> Quarterly performance reports</li>
+                                </ul>
+                                <button class="btn-outline">Request Demo</button>
+                                <button class="btn-primary">Current Plan</button>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-card">
+                            <div class="plan-header">
+                                <h4>Business Plan</h4>
+                                <p class="plan-price">$349<span>/month</span></p>
+                            </div>
+                            <div class="plan-body">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Weekly comprehensive inspections</li>
+                                    <li><i class="fas fa-check"></i> 24/7 dedicated support with 1-hour response</li>
+                                    <li><i class="fas fa-check"></i> Free repairs and replacements</li>
+                                    <li><i class="fas fa-check"></i> Immediate scheduling</li>
+                                    <li><i class="fas fa-check"></i> Monthly detailed performance reports</li>
+                                </ul>
+                                <button class="btn-outline">Request Demo</button>
+                                <button class="btn-primary">Select Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div class="dashboard-tab" id="profile">
+                <h2>Profile Settings</h2>
+                
+                <div class="profile-container">
+                    <!-- Profile Header -->
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <div class="avatar-wrapper">
+                                <i class="fas fa-user-circle"></i>
+                                <button class="change-avatar-btn">
+                                    <i class="fas fa-camera"></i>
+                                    Change Photo
+                                </button>
+                            </div>
+                            <h3>John Doe</h3>
+                            <p class="user-role">Premium Member</p>
+                        </div>
+                    </div>
+
+                    <!-- Profile Form -->
+                    <div class="profile-content">
+                        <div class="profile-section">
+                            <h3><i class="fas fa-user"></i> Personal Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" value="John" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" value="Doe" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" value="john.doe@example.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" value="+1 (555) 123-4567" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-section">
+                            <h3><i class="fas fa-building"></i> Building Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="building-name">Building Name</label>
+                                    <input type="text" id="building-name" value="Skyline Towers">
+                                </div>
+                                <div class="form-group">
+                                    <label for="building-type">Building Type</label>
+                                    <select id="building-type">
+                                        <option value="residential">Residential</option>
+                                        <option value="commercial">Commercial</option>
+                                        <option value="mixed">Mixed Use</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" id="address" value="123 Main Street">
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" value="New York">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" value="NY">
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP Code</label>
+                                    <input type="text" id="zip" value="10001">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@elevatorsolutions.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Elevator Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuItems = document.querySelectorAll('.dashboard-menu li');
+            const tabs = document.querySelectorAll('.dashboard-tab');
+            
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all menu items
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Hide all tabs
+                    tabs.forEach(tab => tab.classList.remove('active'));
+                    // Show the selected tab
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
